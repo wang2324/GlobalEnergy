@@ -17,7 +17,8 @@ people better learn about our current condition.
 
 1)	Since sectional dynamic web site is using Google Spreadsheet as a database, the related dataset has been populated. Thus, this Google Spreadsheet’s URL can be successfully queried in the code. 
 2)	The main tools used to create professional charts in this project are Google API and eChart API. The Google Chart library and eChart library are required to be loaded in the <head> of the web page. The eChart library has been downloaded to the local and used as: <script src="echarts.js"></script>
-3)	The style of home page is using w3.CSS website template, and the library is loaded as: <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+3)	The style of home page is using w3.CSS website template, and the library is loaded as: 
+###<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   
 ## System Architecture and Description
 The final presented dynamic web site is consist of four main subpages which are: Home, Energy Analysis, CO2 Emission and Contact. Except Energy Analysis page, the other three inherit the similar web design but with different content. All of them have a side navigation on the left-hand side with a different icon for each menu and the black background on the right. When the users head to the Energy Analysis page, there will be a responsive navigation containing Home, CO2 Emission and Contact button which can bring them back to the main page. While under the top navigation, there are also five hover tabs corresponding to five different energy sources. When mouse over the navigation links, it will change their colors. The majority of important charts are displayed here.
