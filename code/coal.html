@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Energy Analysis</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="style_energy.css" />
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	
+
+ </head><!--head-->
+
+
+<body>
+	<div id="main">
+		<div class="scrollmenu">
+  			<a href="home.html">Home</a>
+  			<a href="emission.html">CO2 Emission</a>
+  			<a href="contact.html">Contact</a>
+		</div>
+
+		<style>
+			div.scrollmenu {
+			    background-color: #333;
+			    overflow: auto;
+			    white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+			    display: inline-block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px;
+			    text-decoration: none;
+			}
+
+			div.scrollmenu a:hover {
+			    background-color: #777;
+			}
+		</style><!--Top Header-->
+		<div id="content">
+			<div class="navbar">			
+			    <ul>			    	
+			    	<li class=""><a href="totalEnergy.html">Totoal Energy</a></li><!--
+			     --><li class="two"><a href="naturalGas.html">Natural Gas</a></li><!--			    	
+			   	 --><li class="three"><a href="electricity.html">Electricity</a></li><!--
+			     --><li class="four"><a href="oilProducts.html">Oil Products</a></li><!--
+			     --><li class="five"><a href="coal.html">Coal/lignite</a></li><!--
+			     --><li class="six"><a href="renewables.html">Renewables</a></li>			 
+			        <hr />
+			    </ul>
+			</div><!--navbar-->
+			<img src ="img/coal.jpg" height="300" width="1450"><!--header_image-->	
+			<img src ="img/intro_coal.png" height="583" width="1440">
+
+			<center><h2>Coal Production, Trade and Consumption in 2017</h2></center>
+			<div id="PNBarChart" style="height:500px; width: 1000px; margin: 0 0 0 190px;"></div>
+			<script src="echarts.js"></script>
+			<script type="text/javascript">
+				var option = {
+				    title: {
+				        subtext: 'Unit: Mt'
+				                    },
+				    tooltip : {
+				        trigger: 'axis',
+				        axisPointer : {            
+				            type : 'shadow'        
+				        }
+				    },
+				    legend: {
+				        data:['Production', 'Trade', 'Consumption']
+				    },
+				    grid: {
+				        left: '3%',
+				        right: '4%',
+				        bottom: '3%',
+				        containLabel: true
+				    },
+				    xAxis : [
+				        {
+				            type : 'value'
+				        }
+				    ],
+				    yAxis : [
+				        {
+				            type : 'category',
+				            axisTick : {show: false},
+				            data : ['China','US','India','Russia','Sauid Arabia','Canada','Indonesia', 'Iran', 'Australia', 'Brazil']
+				        }
+				    ],
+				    series : [
+				        {
+				            name:'Production',
+				            type:'bar',
+				            stack: 'amount',
+				            label: {
+				                normal: {
+				                    show: true,
+				                }
+				            },
+				            data:[3349, 701, 717, 387, 0, 59, 461, 1, 487, 7]
+				        },
+				        {
+				            name:'Trade',
+				            type:'bar',
+				            stack: 'Trade',
+				            label: {
+				                normal: {
+				                    show: true
+				                }
+				            },
+				            data:[253.9, -81.9, 223.5, -163, 0, -23.2, -360.8, 0.45, -370.8, 21.8]
+				        },
+				        {
+				            name:'Consumption',
+				            type:'bar',
+				            stack: 'amount',
+				            label: {
+				                normal: {
+				                    show: true,
+				                    position: 'left'
+				                }
+				            },
+				            data:[-3607, -649, -953, -232, 0, -39, -100, -2, -119, -28]
+				        }
+				    ]
+				};
+				var myChart = echarts.init(document.getElementById('PNBarChart')); 
+				                
+
+				myChart.setOption(option); 
+			</script>
+
+			<center><h2>Coal Consumption Comparison between 1990 and 2017</h2></center>
+			<div id="ComparePieChart" style="height:500px; width: 1000px; margin:  0 0 0 200px;"></div>
+			<script src="echarts.js"></script>
+			<script type="text/javascript">			
+			var	option = {
+				    title : {
+				        subtext: 'Unit: Mt',
+				        x:'center'
+				    },
+				    tooltip : {
+				        trigger: 'item',
+				        formatter: "{a} <br/>{b} : {c} ({d}%)"
+				    },
+				    legend: {
+				        x : 'center',
+				        y : 'bottom',
+				        data:['Europe','CIS','North America','Latin America','Asia','Pacific','Africa','Middle East']
+				    },
+				    calculable : true,
+				    series : [
+				        {
+				            name:'1990',
+				            type:'pie',
+				            radius : [20, 120],
+				            center : ['25%', '50%'],
+				            roseType : 'radius',
+				            label: {
+				                normal: {
+				                    show: false
+				                },
+				                emphasis: {
+				                    show: true
+				                }
+				            },
+				            lableLine: {
+				                normal: {
+				                    show: false
+				                },
+				                emphasis: {
+				                    show: true
+				                }
+				            },
+				            data:[
+				                {value:1352, name:'Europe'},
+				                {value:659, name:'CIS'},
+				                {value:869, name:'North America'},
+				                {value:34, name:'Latin America'},
+				                {value:1496, name:'Asia'},
+				                {value:96, name:'Pacific'},
+				                {value:146, name:'Africa'},
+				                {value:5.08, name:'Middle East'}
+				            ]
+				        },
+				        {
+				            name:'2017',
+				            type:'pie',
+				            radius : [30, 120],
+				            center : ['75%', '50%'],
+				            roseType : 'area',
+				            data:[
+				                {value:869, name:'Europe'},
+				                {value:362, name:'CIS'},
+				                {value:688, name:'North America'},
+				                {value:76, name:'Latin America'},
+				                {value:5266, name:'Asia'},
+				                {value:122, name:'Pacific'},
+				                {value:207, name:'Africa'},
+				                {value:14, name:'Middle East'}
+				            ]
+				        }
+				    ]
+				};
+				var myChart = echarts.init(document.getElementById('ComparePieChart')); 
+				                
+
+				myChart.setOption(option); 
+			</script>
+			<center><h2>First increase in coal consumption after 3 years of decline (+0.9%)</h2>
+			<div class="newspaper">				
+
+				In 2017, global coal consumption was spurred by India and Turkey, and by Russia and China to a lesser extent. 
+				In China, responsible for nearly half of world coal demand, sustained economic growth, higher power consumption and relaxed coal production restrictions contributed to slightly increase coal consumption after three years of decline. Coal thus remains a pillar for the Chinese economy despite structural economic changes (shift away from energy intensive industries to a more services-oriented economy), strong efficiency gains in the manufacturing industry and in the power sector (shut-down of old and inefficient plants) and the government’s willingness to decarbonise the economy and limit air pollution.
+				Coal demand fell for the 4th year in a row in the United States – 28 GW of coal-fired capacity closed since 2015, no addition in 2017 – and for the 5th year in a row in the European Union (especially in Germany and the UK) due to the closure of many inefficient coal-fired power plants mainly due to stricter environmental regulations. Coal consumption also collapsed in Ukraine as nuclear and hydropower generation increased.
+			</div><!--newpaper-->
+			</center>
+
+
+		</div><!--content-->
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a>
+			| <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
+			| <a href="https://en.wikipedia.org/wiki/D3.js">D3.js</a>
+			| <a href="https://developers.google.com/apis-explorer/#p/">Google API</a>
+			| <a href="https://www.tableau.com/">Tableau</a>
+		</div><!-- footer -->
+	</div><!--main-->
+</body><!--body-->
+
+</html>

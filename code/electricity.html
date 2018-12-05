@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Energy Analysis</title>
+	<link rel="stylesheet" type="text/css" href="style_energy.css" />
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+ </head><!--head-->
+
+
+<body>
+	<div id="main">
+		<div class="scrollmenu">
+  			<a href="home.html">Home</a>
+  			<a href="emission.html">CO2 Emission</a>
+  			<a href="contact.html">Contact</a>
+		</div>
+
+		<style>
+			div.scrollmenu {
+			    background-color: #333;
+			    overflow: auto;
+			    white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+			    display: inline-block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px;
+			    text-decoration: none;
+			}
+
+			div.scrollmenu a:hover {
+			    background-color: #777;
+			}
+		</style><!--Top Header-->		
+		<div id="content">
+			<div class="navbar">			
+			    <ul>			    	
+			    	<li class=""><a href="totalEnergy.html">Totoal Energy</a></li><!--
+			     --><li class="four"><a href="naturalGas.html">Natural Gas</a></li><!--			    	
+			   	 --><li class="two"><a href="electricity.html">Electricity</a></li><!--
+			     --><li class="three"><a href="oilProducts.html">Oil Products</a></li><!--
+			     --><li class="five"><a href="coal.html">Coal/lignite</a></li><!--
+			     --><li class="six"><a href="renewables.html">Renewables</a></li>			 
+			        <hr />
+			    </ul>
+			</div><!--navbar-->
+			<img src ="img/electricity.jpg" height="300" width="1450"><!--header_image-->	
+			<img src ="img/intro_electricity.png" height="631" width="1440"><!--introduction-->
+
+			<center><h2>Electricity Production over 2013-2017</h2></center>
+		    <div id="stepLine" style="height:500px; width: 1000px; margin: 0 0 0 210px;"></div>
+		    <script src="echarts.js"></script>
+		    <script type="text/javascript">
+		        var option = {
+		            title: {
+		                subtext: 'Unit: TWh'
+		            },
+		            tooltip: {
+		                trigger: 'axis'
+		            },
+		            legend: {
+		                data:['China', 'US', 'India', 'Russia', 'Canada', 'Brazil', 'Sauid Arabia', 'Iran', 'Indonesia', 'Australia']
+		            },
+		            grid: {
+		                left: '3%',
+		                right: '4%',
+		                bottom: '3%',
+		                containLabel: true
+		            },
+		            xAxis: {
+		                type: 'category',
+		                data: ['2013', '2014', '2015', '2016', '2017']
+		            },
+		            yAxis: {
+		                type: 'value'
+		            },
+		            series: [
+		                {
+		                    name:'China',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[5440, 5679, 5860, 6165, 6529]
+		                },
+		                {
+		                    name:'US',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[4306, 4339, 4317, 4316, 4251]
+		                },
+		                {
+		                    name:'India',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[1191, 1294, 1383, 1463, 1541]
+		                },
+		                {
+		                    name:'Russia',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[1059, 1064, 1068, 1025, 1090]
+		                },
+		                {
+		                    name:'Canada',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[665, 668, 671, 677, 712]
+		                },
+		                {
+		                    name:'Brazil',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[571,591,582,579,585]
+		                },
+		                {
+		                    name:'Sauid Arabia',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[284,312,338,340,345]
+		                },
+		                {
+		                    name:'Iran',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[275,275,281,288,311]
+		                },
+		                {
+		                    name:'Indonesia',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[216,228,234,249,260]
+		                },
+		                {
+		                    name:'Australia',
+		                    type:'line',
+		                    step: 'start',
+		                    data:[250,248,252,255,255,]
+		                },
+		            ]
+		        };
+
+
+		        var myChart = echarts.init(document.getElementById('stepLine')); 
+		        
+
+		        myChart.setOption(option); 
+		    </script><!--stepLine-->
+
+			<center><h2>Power consumption accelerated again in 2017 (+2.6%)</h2>
+			<div class="newspaper">
+				Electricity consumption globally increases at a faster pace than other energy vectors due to electrification of energy uses. Most of the 2017 increase in global electricity consumption occurred in Asia. As in 2016, the electricity consumption growth in China, amid an industrial recovery and despite strong energy efficiency improvements, contributed to more than half of the world electricity consumption rebound. Power demand also grew in Japan for the first time since 2013, in India, Indonesia and South Korea.
+				Electricity consumption in the United States, which had remained broadly stable since 2011 due to energy efficiency improvements, declined for the second year in a row in 2017, whereas it rose in Canada.
+				It remained stable in the European Union (increase in Italy, Poland, Germany and Spain, decline in the UK) and grew in Turkey. 
+				Electricity consumption also increased significantly in Iran and in Egypt.
+			</div><!--newpaper-->
+			</center>
+
+			<center><h2>Electricity Consumption Trend Breakdown by Region over 2007 - 2017 </h2></center>
+		    <div id="stackArea" style="height:500px; width: 1000px; margin: 0 0 30px 210px;"></div>
+		    <script src="echarts.js"></script>
+		    <script type="text/javascript">
+		        var option = {
+		            title: {
+		                subtext: 'Unit: TWh'		                
+		            },
+		            tooltip : {
+		                trigger: 'axis',
+		                axisPointer: {
+		                    type: 'cross',
+		                    label: {
+		                        backgroundColor: '#6a7985'
+		                    }
+		                }
+		            },
+		            legend: {
+		                data:['2007','2008','2009','2010','2011','2012','2013','2014','2015', '2016', '2017']
+		            },
+		            grid: {
+		                left: '3%',
+		                right: '4%',
+		                bottom: '3%',
+		                containLabel: true
+		            },
+		            xAxis : [
+		                {
+		                    type : 'category',
+		                    boundaryGap : false,
+		                    data:['2007','2008','2009','2010','2011','2012','2013','2014','2015', '2016', '2017']
+		                }
+		            ],
+		            yAxis : [
+		                {
+		                    type : 'value'
+		                }
+		            ],
+		            series : [
+		                {
+		                    name:'Pacific',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    areaStyle: {},
+		                    data:[292, 292, 286, 302, 303, 300, 298, 297, 302, 305, 304]
+		                },
+		                {
+		                    name:'Africa',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    areaStyle: {},
+		                    data:[616, 624, 629, 675, 699, 727, 747, 772, 790, 801, 818]
+		                },
+		                {
+		                    name:'Middle East',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    areaStyle: {},
+		                    data:[732, 786, 818, 892, 916, 958, 988, 1057, 1111, 1146, 1190]
+		                },
+		                {
+		                    name:'Latin America',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    areaStyle: {normal: {}},
+		                    data:[1256, 1305, 1310, 1375, 1446, 1496, 1529, 1557, 1563, 1583, 1590]
+		                },
+		                {
+		                    name:'CIS',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    areaStyle: {normal: {}},
+		                    data:[1458, 1483, 1407, 1513, 1737, 1542, 1538, 1542, 1537, 1561, 1566]
+		                },
+		                {
+		                    name:'Europe',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    areaStyle: {normal: {}},
+		                    data:[3857, 3883, 3708, 3865, 3809, 3841, 3813, 3744, 3082, 3839, 3886]
+		                },
+		                {
+		                    name:'North America',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    areaStyle: {normal: {}},
+		                    data:[4979, 5000, 4798, 4982, 4986, 4927, 4927, 5007, 4988, 4993, 4963]
+		                },
+		                {
+		                    name:'Asia',
+		                    type:'line',
+		                    stack: 'Amount',
+		                    label: {
+		                        normal: {
+		                            show: true,
+		                            position: 'top'
+		                        }
+		                    },
+		                    areaStyle: {normal: {}},
+		                    data:[6716, 6907, 7234, 7983, 8581, 8958, 9539, 9934, 10226, 10691, 11274 ]
+		                }
+		            ]
+		        };
+
+
+		        var myChart = echarts.init(document.getElementById('stackArea')); 
+		        
+
+		        myChart.setOption(option); 
+		    </script><!--stackArea-->
+			
+
+		</div><!--content-->
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a>
+			| <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
+			| <a href="https://en.wikipedia.org/wiki/D3.js">D3.js</a>
+			| <a href="https://developers.google.com/apis-explorer/#p/">Google API</a>
+			| <a href="https://www.tableau.com/">Tableau</a>
+		</div><!-- footer -->
+	</div><!--main-->
+</body><!--body-->
+
+</html>

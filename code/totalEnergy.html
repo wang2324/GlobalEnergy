@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Energy Analysis</title>
+	<link rel="stylesheet" type="text/css" href="style_energy.css" />
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawTrendover);
+		function drawTrendover() {
+
+			var data = google.visualization.arrayToDataTable([
+		        ['Year', 'Europe',{ role: 'style' },'CIS',{ role: 'style' }, 'North America',{ role: 'style' }, 'Latin America', { role: 'style' },'Asia',{ role: 'style' }, 'Pacific', { role: 'style' },'Africa',{ role: 'style' }, 'Middle East',{ role: 'style' } ],
+		        ['2007',    1146, '#2468B5',   1641,  '#658CBA',  2089,  '#A8C1E6',  973, '#D4E5FC', 3229, '#D3C3EB',  305,'#CCB4F0', 1135,'#A991CC', 1554, '#7150A3'],
+		        ['2008',    1152, '#2468B5',   1680,  '#658CBA',  2112,  '#A8C1E6',  974, '#D4E5FC', 3310, '#D3C3EB',  306,'#CCB4F0', 1151,'#A991CC', 1625, '#7150A3'],
+		        ['2009',    1113, '#2468B5',   1589,  '#658CBA',  2080,  '#A8C1E6',  978, '#D4E5FC', 3461, '#D3C3EB',  315,'#CCB4F0', 1127,'#A991CC', 1548, '#7150A3'],
+		        ['2010',    1123, '#2468B5',   1692,  '#658CBA',  2125,  '#A8C1E6',  998, '#D4E5FC', 3712, '#D3C3EB',  343,'#CCB4F0', 1162,'#A991CC', 1629, '#7150A3'],
+		        ['2011',    1081, '#2468B5',   1737,  '#658CBA',  2199,  '#A8C1E6',  1022,'#D4E5FC', 3876, '#D3C3EB',  332,'#CCB4F0', 1090,'#A991CC', 1768, '#7150A3'],
+		        ['2012',    1067, '#2468B5',   1759,  '#658CBA',  2249,  '#A8C1E6',  1031,'#D4E5FC', 3899, '#D3C3EB',  340,'#CCB4F0', 1149,'#A991CC', 1792, '#7150A3'],
+		        ['2013',    1064, '#2468B5',   1786,  '#658CBA',  2326,  '#A8C1E6',  1031,'#D4E5FC', 3996, '#D3C3EB',  365,'#CCB4F0', 1107,'#A991CC', 1811, '#7150A3'],
+		        ['2014',    1045, '#2468B5',   1765,  '#658CBA',  2488,  '#A8C1E6',  1037,'#D4E5FC', 4053, '#D3C3EB',  390,'#CCB4F0', 1110,'#A991CC', 1836, '#7150A3'],
+		        ['2015',    1052, '#2468B5',   1765,  '#658CBA',  2495,  '#A8C1E6',  1002,'#D4E5FC', 4055, '#D3C3EB',  409,'#CCB4F0', 1101,'#A991CC', 1898, '#7150A3'],	
+		        ['2016',    1049, '#2468B5',   1790,  '#658CBA',  2420,  '#A8C1E6',  1002,'#D4E5FC', 3986, '#D3C3EB',  416,'#CCB4F0', 1094,'#A991CC', 1999, '#7150A3'],
+		        ['2017',    1059, '#2468B5',   1859,  '#658CBA',  2522,  '#A8C1E6',  973, '#D4E5FC', 4129, '#D3C3EB',  415,'#CCB4F0', 1112,'#A991CC', 2002, '#7150A3']		        		                		        		        		        		   
+		      ]);
+
+		    var options = {
+		        width: 900,
+		        height: 400,
+		        legend: { position: 'top', maxLines: 3 },
+		        bar: { groupWidth: '75%' },
+		        isStacked: true,
+		        hAxis: {
+		        	title: 'Totaly Energy Trend Over 2007 - 2017',
+		        },
+		        vAxis: {
+		          title: 'Unit: Mtoe'
+		        },
+		        colors: ['#2468B5', '#658CBA', '#A8C1E6', '#D4E5FC', '#D3C3EB', '#CCB4F0', '#A991CC','#7150A3' ]
+
+		      };
+
+
+		    var chart = new google.visualization.ColumnChart(document.getElementById('trend'));
+
+		      chart.draw(data, options);
+	    }//drawTrendover()
+
+        google.charts.setOnLoadCallback(drawPieChart);
+        function drawPieChart() {
+	        var data = google.visualization.arrayToDataTable([
+	          ['Energy', 'Percent'],
+	          ['Oil',     32],
+	          ['Coal',    27],
+	          ['Gas',  	  22],
+	          ['Electricity', 9],
+	          ['Biomass',    10]
+	        ]);
+
+	        var options = {
+	          colors: ['#8CA863', '#AAC97D', '#E3C3C6', '#BD848A', '#BD7179'],
+	          pieHole: 0.6,
+	          height: 450,
+	          title: 'Breakdown by Energy (2017)',
+
+	        };
+
+	        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+	        chart.draw(data, options);
+        }//drawPieChart()
+
+	</script>
+ </head><!--head-->
+
+
+<body>
+	<div id="main">
+		<!--Top Header-->
+		<div class="scrollmenu">
+  			<a href="home.html">Home</a>
+  			<a href="emission.html">CO2 Emission</a>
+  			<a href="contact.html">Contact</a>
+		</div>
+
+		<style>
+			div.scrollmenu {
+			    background-color: #333;
+			    overflow: auto;
+			    white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+			    display: inline-block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px;
+			    text-decoration: none;
+			}
+
+			div.scrollmenu a:hover {
+			    background-color: #777;
+			}
+		</style><!--Top Header-->
+
+		<div id="content">
+			<div class="navbar">			
+			    <ul>			    	
+			    	<li class=""><a href="totalEnergy.html">Totoal Energy</a></li><!--
+			     --><li class="two"><a href="naturalGas.html">Natural Gas</a></li><!--			    	
+			   	 --><li class="three"><a href="electricity.html">Electricity</a></li><!--
+			     --><li class="four"><a href="oilProducts.html">Oil Products</a></li><!--
+			     --><li class="five"><a href="coal.html">Coal/lignite</a></li><!--
+			     --><li class="six"><a href="renewables.html">Renewables</a></li>			 
+			        <hr />
+			    </ul>
+			</div><!--navbar-->
+			<img src ="img/energy.png" height="300" width="1450"><!--header_image-->	
+			<img src="img/intro_energy.png" height="449" width="1440">
+
+
+			<!--start--of--year-selection-->
+			<div class="tab">
+			  <button class="tablinks" onclick="openCity(event, '2013')">2013</button>
+			  <button class="tablinks" onclick="openCity(event, '2014')">2014</button>
+			  <button class="tablinks" onclick="openCity(event, '2015')">2015</button>
+			  <button class="tablinks" onclick="openCity(event, '2016')">2016</button>
+			  <button class="tablinks" onclick="openCity(event, '2017')">2017</button>
+			</div>
+
+			<div id="2013" class="tabcontent">
+				<div id="2013chart" style="height:400px; width: 1200px; margin: 0 0 0 100px;"></div>
+				<script src="echarts.js"></script>
+				<script type="text/javascript">
+					var option = {
+							    title: {
+							        text: 'Total Energy Production and Consumption in 2013',
+							        subtext: 'Unit: Mtoe',
+							    },
+							    tooltip: {
+							        trigger: 'axis',
+							        axisPointer: {
+							            type: 'shadow'
+							        }
+							    },
+							    legend: {
+							        data: ['Production', 'Consumption']
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '4%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'value',
+							        boundaryGap: [0, 0.01]
+							    },
+							    yAxis: {
+							        type: 'category',
+							        data: ['Brazil', 'Iran', 'Australia', 'Indonesia', 'Canada', 'India', 'Sauid Arabia', 'Russia', 'US', 'China']
+
+							    },
+							    series: [
+							        {
+							            name: 'Production',
+							            type: 'bar',
+							            data: [253, 297, 321, 433, 425, 520, 625, 1316, 1824, 2400]
+							        },
+							        {
+							            name: 'Consumption',
+							            type: 'bar',
+							            data: [282, 217, 127, 211, 268, 758, 199, 739, 2162, 2820]
+							        }
+							    ]
+							};
+
+					        var myChart = echarts.init(document.getElementById('2013chart')); 
+					        
+
+					        myChart.setOption(option); 
+			</script><!--2013chart-->
+
+			</div>
+			
+			<div id="2014" class="tabcontent">
+				<div id="2014chart" style="height:400px; width: 1200px; margin: 0 0 0 100px;"></div>
+				<script type="text/javascript">
+					var option = {
+							    title: {
+							        text: 'Total Energy Production and Consumption in 2014',
+							        subtext: 'Unit: Mtoe',
+							    },
+							    tooltip: {
+							        trigger: 'axis',
+							        axisPointer: {
+							            type: 'shadow'
+							        }
+							    },
+							    legend: {
+							        data: ['Production', 'Consumption']
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '4%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'value',
+							        boundaryGap: [0, 0.01]
+							    },
+							    yAxis: {
+							        type: 'category',
+							        data: ['Brazil', 'Iran', 'Australia', 'Indonesia', 'Canada', 'India', 'Sauid Arabia', 'Russia', 'US', 'China']
+
+							    },
+							    series: [
+							        {
+							            name: 'Production',
+							            type: 'bar',
+							            data: [ 254, 298, 345, 445, 453, 525, 614,  1331,  1881, 2466]
+							        },
+							        {
+							            name: 'Consumption',
+							            type: 'bar',
+							            data: [294, 221, 127, 216, 271, 776, 191, 719, 2185, 2910]
+							        }
+							    ]
+							};
+
+			        var myChart = echarts.init(document.getElementById('2014chart')); 
+			        
+
+			        myChart.setOption(option); 
+				</script><!--2014chart-->
+			</div>
+
+			<div id="2015" class="tabcontent">
+				<div id="2015chart" style="height:400px; width: 1200px; margin: 0 0 0 100px;"></div>
+					<script type="text/javascript">
+						var option = {
+							    title: {
+							        text: 'Total Energy Production and Consumption in 2015',
+							        subtext: 'Unit: Mtoe',
+							    },
+							    tooltip: {
+							        trigger: 'axis',
+							        axisPointer: {
+							            type: 'shadow'
+							        }
+							    },
+							    legend: {
+							        data: ['Production', 'Consumption']
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '4%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'value',
+							        boundaryGap: [0, 0.01]
+							    },
+							    yAxis: {
+							        type: 'category',
+							        data: ['Brazil', 'Iran', 'Australia', 'Indonesia', 'Canada', 'India', 'Sauid Arabia', 'Russia', 'US', 'China']
+
+							    },
+							    series: [
+							        {
+							            name: 'Production',
+							            type: 'bar',
+							            data: [268,  316, 366, 448, 469, 543, 622,  1319, 2019, 2496]
+							        },
+							        {
+							            name: 'Consumption',
+							            type: 'bar',
+							            data: [304, 237, 125,  225, 279, 826, 213, 724, 2223, 2955]
+							        }
+							    ]
+							};
+
+			        var myChart = echarts.init(document.getElementById('2015chart')); 
+			        
+
+			        myChart.setOption(option); 
+				</script><!--2015chart-->
+			</div>
+			
+			<div id="2016" class="tabcontent">
+				<div id="2016chart" style="height:400px; width: 1200px; margin: 0 0 0 100px;"></div>
+
+				<script type="text/javascript">
+					var option = {
+							    title: {
+							        text: 'Total Energy Production and Consumption in 2016',
+							        subtext: 'Unit: Mtoe',
+							    },
+							    tooltip: {
+							        trigger: 'axis',
+							        axisPointer: {
+							            type: 'shadow'
+							        }
+							    },
+							    legend: {
+							        data: ['Production', 'Consumption']
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '4%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'value',
+							        boundaryGap: [0, 0.01]
+							    },
+							    yAxis: {
+							        type: 'category',
+							        data: ['Brazil', 'Iran', 'Australia', 'Indonesia', 'Canada', 'India', 'Sauid Arabia', 'Russia', 'US', 'China']
+
+							    },
+							    series: [
+							        {
+							            name: 'Production',
+							            type: 'bar',
+							            data: [280, 324, 381, 426, 470, 554, 649, 1334, 2025, 2498]
+							        },
+							        {
+							            name: 'Consumption',
+							            type: 'bar',
+							            data: [299, 237, 125, 226, 271, 851,  222, 709, 2194, 2976]
+							        }
+							    ]
+							};
+
+					        var myChart = echarts.init(document.getElementById('2016chart')); 
+					        
+
+					        myChart.setOption(option); 
+				</script><!--2016chart-->
+			</div>
+			
+			<div id="2017" class="tabcontent">
+				<div id="2017chart" style="height:400px; width: 1200px; margin: 0 0 0 100px;"></div>
+				<script type="text/javascript">
+					var option = {
+							    title: {
+							        text: 'Total Energy Production and Consumption in 2017',
+							        subtext: 'Unit: Mtoe',
+							    },
+							    tooltip: {
+							        trigger: 'axis',
+							        axisPointer: {
+							            type: 'shadow'
+							        }
+							    },
+							    legend: {
+							        data: ['Production', 'Consumption']
+							    },
+							    grid: {
+							        left: '3%',
+							        right: '4%',
+							        bottom: '3%',
+							        containLabel: true
+							    },
+							    xAxis: {
+							        type: 'value',
+							        boundaryGap: [0, 0.01]
+							    },
+							    yAxis: {
+							        type: 'category',
+							        data: ['Brazil', 'Iran', 'Australia', 'Indonesia', 'Canada', 'India', 'Sauid Arabia', 'Russia', 'US', 'China']
+
+							    },
+							    series: [
+							        {
+							            name: 'Production',
+							            type: 'bar',
+							            data: [293, 386, 401, 429, 504, 596, 652, 1418, 2018, 2499]
+							        },
+							        {
+							            name: 'Consumption',
+							            type: 'bar',
+							            data: [291, 129, 253, 240, 287, 934, 224, 744, 2201, 3105]
+							        }
+							    ]
+							};
+
+					        var myChart = echarts.init(document.getElementById('2017chart')); 
+					        
+
+					        myChart.setOption(option); 
+				</script><!--2017chart-->
+			</div>
+
+			<style>
+				body {font-family: Arial;}
+
+				/* Style the tab */
+				.tab {
+				    overflow: hidden;
+				    border: 1px solid #ccc;
+				    background-color: #f1f1f1;
+				    width: 85%;
+				    margin: 20px 0 20px 110px;
+				}
+
+				/* Style the buttons inside the tab */
+				.tab button {
+				    background-color: inherit;
+				    float: left;
+				    border: none;
+				    outline: none;
+				    cursor: pointer;
+				    padding: 14px 103px;
+				    transition: 0.3s;
+				    font-size: 17px;
+				}
+
+				/* Change background color of buttons on hover */
+				.tab button:hover {
+				    background-color: #ddd;
+				}
+
+				/* Create an active/current tablink class */
+				.tab button.active {
+				    background-color: #ccc;
+				}
+
+				/* Style the tab content */
+				.tabcontent {
+				    display: none;
+				    padding: 6px 12px;
+				    border: 1px solid #ccc;
+				    border-top: none;
+				}
+			</style>
+
+			<script>
+				function openCity(evt, cityName) {
+				    var i, tabcontent, tablinks;
+				    tabcontent = document.getElementsByClassName("tabcontent");
+				    for (i = 0; i < tabcontent.length; i++) {
+				        tabcontent[i].style.display = "none";
+				    }
+				    tablinks = document.getElementsByClassName("tablinks");
+				    for (i = 0; i < tablinks.length; i++) {
+				        tablinks[i].className = tablinks[i].className.replace(" active", "");
+				    }
+				    document.getElementById(cityName).style.display = "block";
+				    evt.currentTarget.className += " active";
+				}
+			</script>
+			<!--end--of--year-selection-->
+
+			<center><h2>World energy production rebounded in 2017 (2.4%), above its historical trend</h2>
+			<div class="newspaper">
+				China was the main contributor to the increase in global energy production, as its coal output grew for the first time after three years of reduction.
+				Higher global energy prices spurred oil and gas production in the United States, after the 2016 drop.
+				Energy production continued to decline in the European Union, owing to the moderate growth in energy consumption, lower primary electricity production (nuclear and hydro) the depletion of oil and gas resources and the climate policy that eventually implies the exit of coal.
+				Large oil and gas exporting countries (Russia, Iran after the end of international sanctions, Canada or Nigeria to a lesser extent) as well as the fast-developing countries (India, Indonesia, Turkey and Brazil) have been the main contributors to the energy production increase in 2017. Conversely, Saudi Arabia's energy production was affected by the OPEC production cut agreement.
+			</div><!--newpaper-->
+			</center>
+			
+			<div id="note" style="float: left; margin: 0 0 0 150px;">
+				<h4 style="opacity: 0.5; font-family: 'Courier New';">
+					<p>( Note: CIS : Commonwealth of Independent States )</p>
+				</h4>
+			</div>
+			<div id="trend"></div>
+			<div id="piechart"></div>
+		</div><!--content-->
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a>
+			| <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
+			| <a href="https://en.wikipedia.org/wiki/D3.js">D3.js</a>
+			| <a href="https://developers.google.com/apis-explorer/#p/">Google API</a>
+			| <a href="https://www.tableau.com/">Tableau</a>
+		</div><!-- footer -->
+	</div><!--main-->
+</body><!--body-->
+
+</html>

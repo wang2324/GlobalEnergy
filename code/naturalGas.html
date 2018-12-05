@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Energy Analysis</title>
+	<link rel="stylesheet" type="text/css" href="style_energy.css" />
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+
+    	google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawSeriesChart);
+
+	    function drawSeriesChart() {
+
+	      var data = google.visualization.arrayToDataTable([
+	        ['ID', 'Consumption', 'Trade', 'Region',         'Production'],
+	        ['USA',    762,        3.1,     'North America',  767        ],
+	        ['RUS',    471,        221.2,   'Asia',           694        ],
+	        ['CHN',    238,        88.2,    'Asia',           147        ],
+	        ['IRN',    200,        9.4,     'Middle East',    209        ],
+	        ['CNA',    134,        60.1,    'North',          184        ],
+	        ['SAU',    98,         1,       'Middle East',    98         ],
+	        ['MEX',    74,         43.9,    'North America',  34         ],
+	        ['IDN',    45,         25.2,    'Asia',           32         ],
+	        ['AUS',    43,         57,      'Pacific',        99         ],
+	        ['INA',    58,         25.4,    'Asia',           71         ]
+	      ]);
+
+	      var options = {
+	        title: 'Correlation between Natural Gas Consumption, Trade ' +
+	               'and Production of Different Region',
+	        hAxis: {title: 'Consumption (bcm)'},
+	        vAxis: {title: 'Trade (bcm)'},
+	        bubble: {textStyle: {fontSize: 11}}
+	      };
+
+	      var chart = new google.visualization.BubbleChart(document.getElementById('series_chart_div'));
+	      chart.draw(data, options);
+	    }
+
+		google.charts.load('current', {packages: ['corechart', 'bar']});
+		google.charts.setOnLoadCallback(drawTrade_col);
+
+		function drawTrade_col() {
+
+		      var data = google.visualization.arrayToDataTable([
+		        ['Country',       'Trade',  { role: 'style' }],
+		        ['CIS',           -275.72,  '#B1C7A3'],
+		        ['Middle-East',   -112.03,  '#B1C7A3'],
+		        ['Africa',        -79.86,   '#B1C7A3'],
+		        ['Pacific',       -70.09,   '#B1C7A3'],
+		        ['North America', -63.13,   '#B1C7A3'],
+		        ['Latin America', 39.1,     '#B1C7A3'],	
+		        ['Asia',          262.78,   '#B1C7A3'],
+		        ['Europe',        284.04,   '#B1C7A3'],		        		   
+		                		        		        		        		   
+		      ]);
+
+		      var options = {
+		        vAxis: {
+		          title: 'Natrual Gas Trade (bcm)',
+		        },
+		        legend: "none" ,
+		        title: 'Natural Gas Trade Break Down by Region (2017)',
+
+		      };
+
+		      var chart = new google.visualization.ColumnChart(document.getElementById('trade_col'));
+
+		      chart.draw(data, options);
+		}//trade()
+
+		google.charts.setOnLoadCallback(drawTrade_bar);
+		function drawTrade_bar() {
+
+		      var data = google.visualization.arrayToDataTable([
+		        ['Energy',       'Trade',  { role: 'style' }],
+		        ['Oil',           83957.73,  '#C93E2C'],
+		        ['Oil Products',  -84861.54,  '#CC5D50'],
+		        ['Gas',           -15760.73,  '#CF786D'],
+		        ['Coal',          -8735.23,  '#D19790'],
+		        ['Biomass',       2668.63,   '#D1B3B0'],		        		   	                		        		        		        		   
+		      ]);
+
+		      var options = {
+		        legend: "none" ,
+		        title: 'Energy Trade Break Down by Energy (2017)',
+		      };
+
+		      var chart = new google.visualization.BarChart(document.getElementById('trade_bar'));
+
+		      chart.draw(data, options);
+		}//trade_bar()
+	</script>
+ </head><!--head-->
+
+
+<body>
+	<div id="main">
+		<div class="scrollmenu">
+  			<a href="home.html">Home</a>
+  			<a href="emission.html">CO2 Emission</a>
+  			<a href="contact.html">Contact</a>
+		</div>
+
+		<style>
+			div.scrollmenu {
+			    background-color: #333;
+			    overflow: auto;
+			    white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+			    display: inline-block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px;
+			    text-decoration: none;
+			}
+
+			div.scrollmenu a:hover {
+			    background-color: #777;
+			}
+		</style><!--Top Header-->
+		
+		<div id="header">
+
+			<script>
+				function openNav() {
+				    document.getElementById("mySidebar").style.width = "200px";
+				    document.getElementById("main").style.marginLeft = "200px";
+				}
+
+				function closeNav() {
+				    document.getElementById("mySidebar").style.width = "0";
+				    document.getElementById("main").style.marginLeft= "0";
+				}
+			</script><!--open sidebar-->
+		</div><!--header-->
+
+		<div id="content">
+			<div class="navbar">			
+			    <ul>			    	
+			    	<li class=""><a href="totalEnergy.html">Totoal Energy</a></li><!--
+			     --><li class="two"><a href="naturalGas.html">Natural Gas</a></li><!--			    	
+			   	 --><li class="three"><a href="electricity.html">Electricity</a></li><!--
+			     --><li class="four"><a href="oilProducts.html">Oil Products</a></li><!--
+			     --><li class="five"><a href="coal.html">Coal/lignite</a></li><!--
+			     --><li class="six"><a href="renewables.html">Renewables</a></li>			 
+			        <hr />
+			    </ul>
+			</div><!--navbar-->
+			<img src ="img/naturalGas.jpg" height="300" width="1450"><!--header_image-->	
+			<img src="img/intro_gas.png" height="565" width="1440">
+
+ 			<div id="series_chart_div" style="width: 900px; height: 500px;"></div>
+
+			<center><h2>Asia and Russia pull natural gas consumption upwards (3%)</h2>
+			<div class="newspaper">				
+				Global gas demand that had been rising since 2014 accelerated in 2017, spurred by Asia, which accounted for 1/3 of the additional demand. China was the largest contributor to the increase in gas consumption, in line with its coal-to-gas substitution policy. Economic growth also helped gas demand increase in India, Japan and South Korea (low nuclear availability for these two countries).
+				Economic recovery and higher heating needs gave a boost to Russian gas demand, which accounted for nearly ¼ of the additional demand worldwide.
+				Gas consumption also continued to grow at a steady pace in the Middle-East, especially in Iran and Saudi Arabia, and in Africa, mainly in Egypt (rise in domestic production) and in Nigeria.
+				Improved economic conditions and lower nuclear and hydropower availability in Europe contributed to raise European gas consumption again, especially in Germany and in southern Europe (Turkey, Italy, Spain, and Portugal). It declined in the United Kingdom over milder temperature and fierce competition from renewables in power generation.
+				In North America, gas consumption posted its first drop in seven years the United States, due to the lower electricity demand, competition from renewable power sources and relatively high hydropower generation, whereas it surged in Canada.
+			</div><!--newpaper-->
+			</center>
+
+			<div id="trade_col" style="width: 900px; height: 500px;"></div>
+			<div id="trade_bar" style="width: 500px; height: 500px;"></div>
+		</div><!--content-->
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a>
+			| <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
+			| <a href="https://en.wikipedia.org/wiki/D3.js">D3.js</a>
+			| <a href="https://developers.google.com/apis-explorer/#p/">Google API</a>
+			| <a href="https://www.tableau.com/">Tableau</a>
+		</div><!-- footer -->
+	</div><!--main-->
+</body><!--body-->
+
+</html>

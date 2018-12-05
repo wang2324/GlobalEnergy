@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Energy Analysis</title>
+	<link rel="stylesheet" type="text/css" href="style_energy.css" />
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script>
+ 
+       google.charts.load('current', {'packages':['treemap']});
+       google.charts.setOnLoadCallback(drawTreeMap);
+       function drawTreeMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Location', '    Parent',           'Consumption (Mt)'],
+          ['Global',        null,                 0             ],                 
+          ['Europe',        'Global',             587           ],                
+          ['CIS',           'Global',             203           ],              
+          ['North America', 'Global',             878           ],
+          ['South America', 'Global',             193           ],                
+          ['Latin America', 'Global',             341           ],                
+          ['Asia',          'Global',             1335          ],                
+          ['Pacific',       'Global',             56            ],                            
+          ['Africa',        'Global',             171           ],                  
+		  ['Middle East',   'Global',             295           ],
+		  ['Russia',        'Asia',               155           ],
+		  ['China',         'Asia',               554           ],
+		  ['South Korea',   'Asia',               107           ],
+		  ['Korea',         'Asia',               164           ],
+		  ['India',         'Asia',               212           ],
+		  ['Thailand',      'Asia',               52            ],
+		  ['Indonesia',     'Asia',               68            ],
+		  ['Malaysia',      'Asia',               29            ],
+		  ['Canada',        'North America',      105           ],
+		  ['United States', 'North America',      773           ],
+		  ['Mexio',         'North America',      83            ],
+		  ['Brazil',        'South America',      110           ],
+		  ['Argentina',     'South America',      31            ],
+		  ['Colombia',      'South America',      14            ],
+		  ['Chile',         'South America',      15            ],
+		  ['Sweden',        'Europe',             10            ],
+		  ['France',        'Europe',             67            ],
+		  ['Germany',       'Europe',             102           ],
+		  ['Poland',        'Europe',             28            ],
+		  ['Spain',         'Europe',             50            ],   
+		  ['Netherlands',   'Europe',             25            ],                  
+        ]);
+
+        var options = {
+          title: 'Oil Products Global Consumption in 2017',
+        };
+
+        tree = new google.visualization.TreeMap(document.getElementById('treeMap'));
+
+        tree.draw(data, {
+          highlightOnMouseOver: true,
+          minColor: '#B1C7A3',
+          midColor: '#97B7C4',
+          maxColor: '#C7A7A3',
+          headerHeight: 15,
+          fontColor: 'black',
+          showScale: true
+        });
+
+      }//drawTreeMap_Consumption()    
+	</script>
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawAllSheets);
+		
+		function drawAllSheets() {
+			
+			drawSheetName('production',
+			              'SELECT A,F',
+						  chartGeo2017);
+			drawSheetName('production', 
+						  'SELECT A,E',
+						  chartGeo2016);
+			drawSheetName('production', 
+						  'SELECT A,D',
+						  chartGeo2015);
+			drawSheetName('production',
+						  'SELECT A,C',
+						  chartGeo2014);
+			drawSheetName('production',
+						  'SELECT A,B',
+						  chartGeo2013);
+		} //drawAllSheets()
+		
+		function drawSheetName(sheetName, query, responseHandler) {
+			
+			var queryString = encodeURIComponent(query);
+			var query = new google.visualization.Query(
+				'https://docs.google.com/spreadsheets/d/1BvRc5evK2aFvTpuKaqvRxYEI3sx8s5JImVfxTOyfZlE/edit?usp=sharing' 
+				+ sheetName + '&headers=1&tq=' + queryString);
+			query.send(responseHandler);
+		} //drawSheetName
+
+		function chartGeo2017(response) {
+			var data = response.getDataTable();
+			data.sort({column: 1, desc: true });
+			
+			var options = {
+				height: 500, width: 700,
+				colorAxis: {colors: ['#BED1B0', '#677A58']}, //green
+			};
+			
+			var chart = new google.visualization.GeoChart(document.getElementById('chartGeo2017'));
+			chart.draw(data, options);
+		} //chartGeo2017
+
+		function chartGeo2016(response) {
+			var data = response.getDataTable();
+			data.sort({column: 1, desc: true });
+			
+			var options = {
+				height: 500, width: 700,
+				colorAxis: {colors: ['#A9C3C4', '#58787A']}, //blue
+			};
+			
+			var chart = new google.visualization.GeoChart(document.getElementById('chartGeo2016'));
+			chart.draw(data, options);
+		} //chartGeo2016
+5
+		function chartGeo2015(response) {
+			var data = response.getDataTable();
+			data.sort({column: 1, desc: true });
+			
+			var options = {
+				height: 500, width: 700,
+				colorAxis: {colors: ['#C4AAA9', '#BD4A46']}, //red
+			};
+			
+			var chart = new google.visualization.GeoChart(document.getElementById('chartGeo2015'));
+			chart.draw(data, options);
+		} //chartGeo2015
+
+		function chartGeo2014(response) {
+			var data = response.getDataTable();
+			data.sort({column: 1, desc: true });
+			
+			var options = {
+				height: 500, width: 700,
+				colorAxis: {colors: ['#B8A9C4', '#7C6D87']}, //purple
+			};
+			
+			var chart = new google.visualization.GeoChart(document.getElementById('chartGeo2014'));
+			chart.draw(data, options);
+		} //chartGeo2014
+
+		function chartGeo2013(response) {
+			var data = response.getDataTable();
+			data.sort({column: 1, desc: true });
+			
+			var options = {
+				height: 500, width: 700,
+				colorAxis: {colors: ['#DBDBC1', '#D6D66F']}, //yellow
+			};
+			
+			var chart = new google.visualization.GeoChart(document.getElementById('chartGeo2013'));
+			chart.draw(data, options);
+		} //chartGeo2013
+    </script>
+ </head><!--head-->
+
+
+<body>
+	<div id="main">
+		<div class="scrollmenu">
+  			<a href="home.html">Home</a>
+  			<a href="emission.html">CO2 Emission</a>
+  			<a href="contact.html">Contact</a>
+		</div>
+
+		<style>
+			div.scrollmenu {
+			    background-color: #333;
+			    overflow: auto;
+			    white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+			    display: inline-block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px;
+			    text-decoration: none;
+			}
+
+			div.scrollmenu a:hover {
+			    background-color: #777;
+			}
+		</style><!--Top Header-->
+		<div id="content">
+			<div class="navbar">			
+			    <ul>			    	
+			    	<li class=""><a href="totalEnergy.html">Totoal Energy</a></li><!--
+			     --><li class="two"><a href="naturalGas.html">Natural Gas</a></li><!--			    	
+			   	 --><li class="three"><a href="electricity.html">Electricity</a></li><!--
+			     --><li class="four"><a href="oilProducts.html">Oil Products</a></li><!--
+			     --><li class="five"><a href="coal.html">Coal/lignite</a></li><!--
+			     --><li class="six"><a href="renewables.html">Renewables</a></li>			 
+			        <hr />
+			    </ul>
+			</div><!--navbar-->
+			<img src ="img/oilProducts.jpg" height="300" width="1450"><!--header_image-->
+			<img src ="img/intro_oil.png" height="553" width="1440">
+
+		    <div id="stackPie" style="height:300px"></div>
+		    <script src="echarts.js"></script>
+		    <script type="text/javascript">
+		        var option = {
+		            angleAxis: {
+		                type: 'category',
+		                data: ['petroleum products made from a barrel of crude oil , 2017 (Unit: gallon)'],
+		                z: 10
+		            },
+		            radiusAxis: {
+		            },
+		            polar: {
+		            },
+		            series: [{
+		                type: 'bar',
+		                data: [11],
+		                coordinateSystem: 'polar',
+		                name: 'ultra-low sulfur distillate',
+		         
+		            }, {
+		                type: 'bar',
+		                data: [4],
+		                coordinateSystem: 'polar',
+		                name: 'jet fuel',
+
+		            }, {
+		                type: 'bar',
+		                data: [6],
+		                coordinateSystem: 'polar',
+		                name: 'other products',
+		            },{
+		                type: 'bar',
+		                data: [1],
+		                coordinateSystem: 'polar',
+		                name: 'other distillates(heating oil)',
+
+		            }, {
+		                type: 'bar',
+		                data: [1],
+		                coordinateSystem: 'polar',
+		                name: 'heavey fuel oil(residual)',
+
+		            }, {
+		                type: 'bar',
+		                data: [2],
+		                coordinateSystem: 'polar',
+		                name: 'hydrocarbon gas liquids',
+
+		            }, {
+		                type: 'bar',
+		                data: [20],
+		                coordinateSystem: 'polar',
+		                name: 'gasoline',
+
+		            }],
+		            legend: {
+		                show: true,
+		                data: ['ultra-low sulfur distillate', 'jet fuel', 'other products', 'other distillates(heating oil)', 'heavey fuel oil(residual)', 'hydrocarbon gas liquids', 'gasoline']
+		            }
+		        };
+
+
+
+		        var myChart = echarts.init(document.getElementById('stackPie')); 
+		        
+
+		        myChart.setOption(option); 
+		    </script><!--stackPie-->
+
+
+			<center><h2>Oil demand, mainly linked to the transport and petrochemical sectors, continued to rise in 2017 (1.7%)</h2>
+			<div class="newspaper">				
+				Global oil product consumption continued to grow in 2017, driven by an increasing demand from transport and petrochemical industry. Oil demand dynamics in transportation is in line with the development of the worldwide vehicle fleet that is increasingly oriented toward more consuming vehicles (SUVs). This trend, coupled with the economic growth, offset the efficiency gains posted since 2005 in the United States and Europe and oil demand slightly increased in these two markets in 2017. Petrochemical oil demand is mainly linked to global economic growth.
+				Asian countries, which accounted for most of the global increase, posted a steady growth in oil consumption, especially in China, India (above 5% in both countries), Indonesia, Thailand and South Korea. 
+				Despite the recovery in Brazil, oil consumption decreased in Latin America for the third consecutive year, as demand contracted again in Mexico and in Argentina.
+				Oil product demand also declined in Russia and in Saudi Arabia in 2017.
+			</div><!--newpaper-->
+			</center>
+
+		<center><h2>Crude Oil Production Breakdown by Countries</h2></center>
+		<br>
+		<center><p>Unit: Mt</p></center>
+		<br>
+		<div id= "vertical_tab">
+			<div class="tab">
+			  <button class="tablinks" onclick="openCity(event, '2017')" id="defaultOpen">2017</button>
+			  <button class="tablinks" onclick="openCity(event, '2016')">2016</button>
+			  <button class="tablinks" onclick="openCity(event, '2015')">2015</button>
+			  <button class="tablinks" onclick="openCity(event, '2014')">2014</button>
+			  <button class="tablinks" onclick="openCity(event, '2013')">2013</button>
+			</div>
+
+			<div id="2017" class="tabcontent">
+				<div id="chartGeo2017"></div>
+
+			</div><!--chartGeo2017-->
+
+			<div id="2016" class="tabcontent">
+				<div id="chartGeo2016"></div>
+			</div><!--chartGeo2016-->
+
+			<div id="2015" class="tabcontent">
+				<div id="chartGeo2015"></div>
+			</div><!--chartGeo2015-->
+
+			<div id="2014" class="tabcontent">
+				<div id="chartGeo2014"></div>
+			</div><!--chartGeo2014-->
+			
+			<div id="2013" class="tabcontent">
+				<div id="chartGeo2013"></div>
+			</div><!--chartGeo2013-->
+			<style>
+				/* Style the tab */
+				.tab {
+				    float: left;
+				    border: 1px solid #ccc;
+				    background-color: #f1f1f1;
+				    width: 15%;
+				    height: 500px;
+				    margin: 0 0 0 150px;
+				}
+
+				/* Style the buttons inside the tab */
+				.tab button {
+				    display: block;
+				    background-color: inherit;
+				    color: black;
+				    padding: 22px 16px;
+				    width: 100%;
+				    height: 100px;
+				    border: none;
+				    outline: none;
+				    text-align: left;
+				    cursor: pointer;
+				    transition: 0.3s;
+				    font-size: 17px;
+				}
+
+				/* Change background color of buttons on hover */
+				.tab button:hover {
+				    background-color: #ddd;
+				}
+
+				/* Create an active/current "tab button" class */
+				.tab button.active {
+				    background-color: #ccc;
+				}
+
+				/* Style the tab content */
+				.tabcontent {
+				    float: left;
+				    border: 1px solid #ccc;
+				    border-left: none;
+				    height: 500px;
+				    margin: 0 20px 0 20px;
+				}
+
+				/* Create an active/current "tab button" class */
+				.tab button.active {
+				    background-color: #ccc;
+				}
+
+				/* Style the tab content */
+				.tabcontent {
+				    float: left;
+				    border: 1px solid #ccc;
+				    width: 62%;
+				    border-left: none;
+				    height: 500px;
+				}
+			</style>
+
+			<script>
+			function openCity(evt, cityName) {
+			    var i, tabcontent, tablinks;
+			    tabcontent = document.getElementsByClassName("tabcontent");
+			    for (i = 0; i < tabcontent.length; i++) {
+			        tabcontent[i].style.display = "none";
+			    }
+			    tablinks = document.getElementsByClassName("tablinks");
+			    for (i = 0; i < tablinks.length; i++) {
+			        tablinks[i].className = tablinks[i].className.replace(" active", "");
+			    }
+			    document.getElementById(cityName).style.display = "block";
+			    evt.currentTarget.className += " active";
+			}
+
+			// Get the element with id="defaultOpen" and click on it
+			document.getElementById("defaultOpen").click();
+			</script>
+		</div><!--vertical_tab-->
+
+		<div id="treeMapsection">
+			<center><h2>Crude Oil Consumption Breakdown by Region (2017)</h2></center>	
+			
+		</div>
+		<div id="treeMap" style="width: 900px; height: 500px;"></div>
+		</div><!--content-->
+
+
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a>
+			| <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
+			| <a href="https://en.wikipedia.org/wiki/D3.js">D3.js</a>
+			| <a href="https://developers.google.com/apis-explorer/#p/">Google API</a>
+			| <a href="https://www.tableau.com/">Tableau</a>
+		</div><!-- footer -->
+	</div><!--main-->
+</body><!--body-->
+
+</html>

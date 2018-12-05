@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Energy Analysis</title>
+	<link rel="stylesheet" type="text/css" href="style_energy.css" />
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+ </head><!--head-->
+
+
+<body>
+	<div id="main">
+		<div class="scrollmenu">
+  			<a href="home.html">Home</a>
+  			<a href="emission.html">CO2 Emission</a>
+  			<a href="contact.html">Contact</a>
+		</div>
+
+		<style>
+			div.scrollmenu {
+			    background-color: #333;
+			    overflow: auto;
+			    white-space: nowrap;
+			}
+
+			div.scrollmenu a {
+			    display: inline-block;
+			    color: white;
+			    text-align: center;
+			    padding: 14px;
+			    text-decoration: none;
+			}
+
+			div.scrollmenu a:hover {
+			    background-color: #777;
+			}
+		</style><!--Top Header-->
+		<div id="content">
+			<div class="navbar">			
+			    <ul>			    	
+			    	<li class=""><a href="totalEnergy.html">Totoal Energy</a></li><!--
+			     --><li class="two"><a href="naturalGas.html">Natural Gas</a></li><!--			    	
+			   	 --><li class="three"><a href="electricity.html">Electricity</a></li><!--
+			     --><li class="four"><a href="oilProducts.html">Oil Products</a></li><!--
+			     --><li class="five"><a href="coal.html">Coal/lignite</a></li><!--
+			     --><li class="six"><a href="renewables.html">Renewables</a></li>			 
+			        <hr />
+			    </ul>
+			</div><!--navbar-->
+			<img src ="img/renewables.jpg" height="300" width="1450"><!--header_image-->	
+ 			<img src ="img/intro_renewables.png" height="578" width="1440"><!--introduction-->
+
+			<div id="embededPieChart1" style="height:500px; width: 1000px; margin: 0 0 0 200px;"></div>
+			<script src="echarts.js"></script>
+			<script type="text/javascript">	
+				var option = {
+				    title: {
+				        text: '% in Electricity Production (2017)',
+				        x:'center'
+				    },
+				    tooltip: {
+				        trigger: 'item',
+				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				    },
+				    legend: {
+				        orient: 'vertical',
+				        x: 'left',
+				        data:['Europe','CIS','North America','Latin America','Asia','Pacific','Africa','Middle East']
+				    },
+				    series: [
+				        {
+				            name:'Region',
+				            type:'pie',
+				            selectedMode: 'single',
+				            radius: [0, '30%'],
+
+				            label: {
+				                normal: {
+				                    position: 'inner'
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    show: false
+				                }
+				            },
+				            data:[
+				                {value:25, name:'renewables', selected:true},
+				                {value:75, name:'Non Renewables'},
+				            ]
+				        },
+				        {
+				            name:'Region',
+				            type:'pie',
+				            radius: ['40%', '55%'],
+				            label: {
+				                normal: {
+				                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+				                    backgroundColor: '#eee',
+				                    borderColor: '#aaa',
+				                    borderWidth: 1,
+				                    borderRadius: 4,
+				                    rich: {
+				                        a: {
+				                            color: '#999',
+				                            lineHeight: 22,
+				                            align: 'center'
+				                        },
+				                        hr: {
+				                            borderColor: '#aaa',
+				                            width: '100%',
+				                            borderWidth: 0.5,
+				                            height: 0
+				                        },
+				                        b: {
+				                            fontSize: 16,
+				                            lineHeight: 33
+				                        },
+				                        per: {
+				                            color: '#eee',
+				                            backgroundColor: '#334455',
+				                            padding: [2, 4],
+				                            borderRadius: 2
+				                        }
+				                    }
+				                }
+				            },
+				            data:[
+				                {value:33.6, name:'Europe'},
+				                {value:17.4, name:'CIS'},
+				                {value:24.4, name:'North America'},
+				                {value:56, name:'Latin America'},
+				                {value:21.4, name:'Asia'},
+				                {value:24.9, name:'Pacific'},
+				                {value:18.1, name:'Africa'},
+				                {value:2.14, name:'Middle East'}
+				            ]
+				        }
+				    ]
+				};
+				var myChart = echarts.init(document.getElementById('embededPieChart1')); 
+				                
+
+				myChart.setOption(option); 
+			</script><!--embededPieChart-->
+
+			<div id="embededPieChart2" style="height:500px; width: 1000px; margin: 0 0 0 200px;"></div>
+			<script src="echarts.js"></script>
+			<script type="text/javascript">	
+				var option = {
+				    title: {
+				        text: '% in Electricity Production (2017)',
+				        x:'center'
+				    },
+				    tooltip: {
+				        trigger: 'item',
+				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				    },
+				    legend: {
+				        orient: 'vertical',
+				        x: 'left',
+				        data:['Europe','CIS','North America','Latin America','Asia','Pacific','Africa','Middle East']
+				    },
+				    series: [
+				        {
+				            name:'Region',
+				            type:'pie',
+				            selectedMode: 'single',
+				            radius: [0, '30%'],
+
+				            label: {
+				                normal: {
+				                    position: 'inner'
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    show: false
+				                }
+				            },
+				            data:[
+				                {value:25, name:'Wind', selected:true},
+				                {value:75, name:'Solar'},
+				                {value:75, name:'Others'}
+				            ]
+				        },
+				        {
+				            name:'Region',
+				            type:'pie',
+				            radius: ['40%', '55%'],
+				            label: {
+				                normal: {
+				                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+				                    backgroundColor: '#eee',
+				                    borderColor: '#aaa',
+				                    borderWidth: 1,
+				                    borderRadius: 4,
+				                    rich: {
+				                        a: {
+				                            color: '#999',
+				                            lineHeight: 22,
+				                            align: 'center'
+				                        },
+				                        hr: {
+				                            borderColor: '#aaa',
+				                            width: '100%',
+				                            borderWidth: 0.5,
+				                            height: 0
+				                        },
+				                        b: {
+				                            fontSize: 16,
+				                            lineHeight: 33
+				                        },
+				                        per: {
+				                            color: '#eee',
+				                            backgroundColor: '#334455',
+				                            padding: [2, 4],
+				                            borderRadius: 2
+				                        }
+				                    }
+				                }
+				            },
+				            data:[
+				                {value:13.5, name:'Europe'},
+				                {value:0.19, name:'CIS'},
+				                {value:8.13, name:'North America'},
+				                {value:5.54, name:'Latin America'},
+				                {value:5.63, name:'Asia'},
+				                {value:10.5, name:'Pacific'},
+				                {value:2.41, name:'Africa'},
+				                {value:0.35, name:'Middle East'}
+				            ]
+				        }
+				    ]
+				};
+				var myChart = echarts.init(document.getElementById('embededPieChart2')); 
+				                
+
+				myChart.setOption(option); 
+			</script><!--embededPieChart-->
+
+			<center><h2>Renewable energies are progressing quickly with falling costs</h2>
+			<div class="newspaper">				
+				The share of renewable energy sources (RES, including hydropower) within the global power generation mix, which has been rising quickly since the end of the 2000’s, grew by nearly 1 percentage point in 2017, to almost 25%. Wind and solar generation has gained momentum, encouraged by ambitious climate policies in the European Union, the United States, China, India, Japan and Australia, and by the dramatic fall in solar and wind development costs over recent years, enabling developing countries to expand their renewable capacities. Solar was responsible of 20% of the additional power generation in 2017 and wind 30%. Renewables now cover 1/3 of the power mix in Europe, 1/4 in China and 1/6 in the United States, India and Japan.
+				In the European Union, the share of renewables remained stable in 2017, as the strong increase in renewable generation in Germany and the UK was offset by adverse hydraulic conditions in southern Europe (France, Italy, Spain).
+			</div><!--newpaper-->
+			</center>
+			<div id="electricity_trend"></div>
+
+			<div id="piechart"></div>
+		</div><!--content-->
+		<div id="footer">
+			&copy; <script>var d = new Date(); document.write(d.getFullYear());</script>
+			| <a href="https://en.wikipedia.org/wiki/HTML5">HTML5</a>
+			| <a href="https://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a>
+			| <a href="https://en.wikipedia.org/wiki/D3.js">D3.js</a>
+			| <a href="https://developers.google.com/apis-explorer/#p/">Google API</a>
+			| <a href="https://www.tableau.com/">Tableau</a>
+		</div><!-- footer -->
+	</div><!--main-->
+</body><!--body-->
+
+</html>
