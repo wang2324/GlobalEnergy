@@ -30,3 +30,6 @@ The original datasets are pretty large and each dataset consists of information 
 
 ## Presentation
 Presentation folder contains two files: PowerPoint and a YouTube link to the presentation video. The video is a general analysis of each energy source according to the visualized data. 
+
+## Technical Report
+This report provides an overview of functional requirements to set up and compile the HTML files. Also, it introduces the system architecture and development platforms used in this project. In addition, the proposed visualizations are described in details. In the end, you can also find useful tips of how to start an interactive web design and complex data visualizations.
