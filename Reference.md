@@ -11,6 +11,6 @@ https://www.w3schools.com
 ## API
 Google API: https://developers.google.com/chart/
 
-eChart API: hhttps://ecomfe.github.io/echarts-doc/public/en/index.html
+eChart API: https://ecomfe.github.io/echarts-doc/public/en/index.html
 
 
