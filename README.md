@@ -28,3 +28,6 @@ echarts.js
 
 ## Dataset
 The original datasets are pretty large and each dataset consists of information about 60 countries over 27 years. To make the analysis more niche-targeting, the countries selected are narrowed down to United States, Sauid Arabia, Russia, Canada, Iran, China, Brazil, Mexico, India, Indonesia. The cleaned data is directly addressed in the HTML files. 
+
+## Presentation
+Presentation folder contains two files: PowerPoint and a YouTube link to the presentation video. The video is a general analysis of each energy source according to the visualized data. 
